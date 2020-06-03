@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -37,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_main);
+        setContentView(R.layout.activity_main);
         addView();
     }
 
     private void addView(){
-        rvListMH = findViewById(id.rvMatHang);
+        rvListMH = findViewById(R.id.rvMatHang);
         rvListMH.setLayoutManager(new LinearLayoutManager(this));
         controller = (ICartController) getApplication();
         listProduct = controller.getAllProduct();
@@ -106,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,product.getName() + " đã có trong giỏ hàng", Toast.LENGTH_SHORT).show();
             }
         }
+
+
     }
     private class Adapter extends RecyclerView.Adapter<ProductViewHolder>{
         List<Product> productList;
@@ -131,5 +134,7 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return productList.size();
         }
+
+
     }
 }
